@@ -21,7 +21,7 @@ export default struct SwiperExample {
       .loop(true) //是否开启循环
       .duration(1000) //切换的动画时长
       .itemSpace(5) //图片间隙，默认为0
-      .indicator(true)  //是否启用导航指示器，默认true
+      .indicator(true) //是否启用导航指示器，默认true
     }
     .height('100%')
     .margin({ top: '5vp' })
