@@ -7,8 +7,8 @@ import promptAction from '@ohos.promptAction';
 @Component
 struct Login {
   @State message: string = '欢迎登录';
-  @State user: string = ''; // 用户名
-  @State password: string = ''; // 密码
+  @State user: string = 'admin'; // 用户名
+  @State password: string = 'admin'; // 密码
   private otherData: Array<string> = [
     '微信', 'QQ', '手机'
   ]
