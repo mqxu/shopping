@@ -1,5 +1,7 @@
 // 导入页面路由模块
 import router from '@ohos.router';
+// 导入弹窗
+import promptAction from '@ohos.promptAction';
 
 @Entry
 @Component
@@ -58,12 +60,22 @@ struct Login {
           .width('90%')
           .margin('20vp')
           .onClick(() => {
-            // 路由跳转
-            router.pushUrl({
-              url: 'pages/MainPage'
-            }).catch((err: Error) => {
-              // 错误提示
-            })
+            // 判断用户名和密码非空
+            if (this.user == '' || this.password == '') {
+              // 不能跳转，同时提示
+              promptAction.showToast({
+                message: '用户名或密码不能为空',
+                duration: 1000,
+                bottom: '360vp'
+              })
+            } else {
+              // 路由跳转
+              router.pushUrl({
+                url: 'pages/MainPage'
+              }).catch((err: Error) => {
+                // 错误提示
+              })
+            }
           })
 
         // 其他
