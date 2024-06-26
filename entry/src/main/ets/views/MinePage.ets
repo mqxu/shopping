@@ -1,5 +1,5 @@
 @Component
-export default struct My {
+export default struct Mine {
   @State message: string = '我的'
 
   build() {
