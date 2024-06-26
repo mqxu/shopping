@@ -2,8 +2,11 @@
 @Component
 struct Login {
   @State message: string = '欢迎登录';
-  @State user: string = '';
-  @State password: string = '';
+  @State user: string = ''; // 用户名
+  @State password: string = ''; // 密码
+  private otherData: Array<string> = [
+    '微信', 'QQ', '手机'
+  ]
 
   build() {
     Row() {
@@ -66,12 +69,10 @@ struct Login {
 
         // 三个按钮
         Row() {
-          Button('微信', { type: ButtonType.Circle })
-            .circleBtnStyle()
-          Button('QQ', { type: ButtonType.Circle })
-            .circleBtnStyle()
-          Button('手机', { type: ButtonType.Circle })
-            .circleBtnStyle()
+          ForEach(this.otherData, (item: string) => {
+            Button(item, { type: ButtonType.Circle })
+              .circleBtnStyle()
+          }, (item: string) => JSON.stringify(item))
         }
         .width('100%')
         .justifyContent(FlexAlign.SpaceAround)
