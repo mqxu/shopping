@@ -1,3 +1,5 @@
+import router from '@ohos.router'
+
 @Entry
 @Component
 struct Main {
@@ -6,9 +8,17 @@ struct Main {
   build() {
     Row() {
       Column() {
-        Text(this.message)
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
+        Button('返回登录页', { type: ButtonType.Capsule })
+          .width('90%')
+          .margin('20vp')
+          .onClick(() => {
+            // 路由跳转
+            router.pushUrl({
+              url: 'pages/LoginPage'
+            }).catch((err: Error) => {
+              // 错误提示
+            })
+          })
       }
       .width('100%')
     }

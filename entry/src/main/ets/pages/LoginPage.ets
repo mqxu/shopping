@@ -1,3 +1,6 @@
+// 导入页面路由模块
+import router from '@ohos.router';
+
 @Entry
 @Component
 struct Login {
@@ -55,7 +58,12 @@ struct Login {
           .width('90%')
           .margin('20vp')
           .onClick(() => {
-            // 点击按钮的具体逻辑
+            // 路由跳转
+            router.pushUrl({
+              url: 'pages/MainPage'
+            }).catch((err: Error) => {
+              // 错误提示
+            })
           })
 
         // 其他
