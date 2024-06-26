@@ -21,10 +21,7 @@ struct Login {
 
         // 用户名和密码输入框
         TextInput({ placeholder: '请输入用户名' })
-          .placeholderColor(0x999999) // 提示文字颜色
-          .maxLength(6) // 最大长度
-          .padding('12vp') // 内外边距
-          .margin('10vp')
+          .inputStyle() // 公共样式函数
           .onChange(data => { // 输入框的值发生变化时，触发回调，data代表输入的内容
             this.user = data;
             console.info('user:' + data)
@@ -32,10 +29,7 @@ struct Login {
 
         TextInput({ placeholder: '请输入密码' })
           .type(InputType.Password) // 输入框类型
-          .placeholderColor(0x999999)
-          .maxLength(6)
-          .padding('12vp')
-          .margin('10vp')
+          .inputStyle() // 公共样式函数
           .onChange(data => { // 输入框的值发生变化时，触发回调，data代表输入的内容
             this.password = data;
             console.info('password:' + data)
@@ -73,14 +67,11 @@ struct Login {
         // 三个按钮
         Row() {
           Button('微信', { type: ButtonType.Circle })
-            .width('60vp')
-            .height('60vp')
+            .circleBtnStyle()
           Button('QQ', { type: ButtonType.Circle })
-            .width('60vp')
-            .height('60vp')
+            .circleBtnStyle()
           Button('手机', { type: ButtonType.Circle })
-            .width('60vp')
-            .height('60vp')
+            .circleBtnStyle()
         }
         .width('100%')
         .justifyContent(FlexAlign.SpaceAround)
@@ -90,4 +81,21 @@ struct Login {
     }
     .height('100%')
   }
+}
+
+// 添加公共的样式函数
+// @Extend装饰器：扩展组件样式
+// @Extend(组件描述名称) function 样式名称
+// 输入框公共样式函数
+@Extend(TextInput) function inputStyle() {
+  .placeholderColor(0x999999)
+  .maxLength(6)
+  .padding('12vp')
+  .margin('10vp')
+}
+
+// 原型按钮公共样式函数
+@Extend(Button) function circleBtnStyle() {
+  .width('60vp')
+  .height('60vp')
 }
