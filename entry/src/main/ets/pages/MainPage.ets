@@ -40,7 +40,7 @@ struct Main {
       Column() {
         // barPosition.Start 左侧或顶部， .vertical(true)，true页签位于左侧，false页签位于顶部
         // barPosition.End 左侧或底部， .vertical(true)，true页签位于右侧，false页签位于底部
-        Tabs({ barPosition: BarPosition.End }) {
+        Tabs({ barPosition: BarPosition.End, controller: this.controller }) {
           ForEach(this.items, (item: {
             title: string,
             iconSelected: Resource,
@@ -68,6 +68,7 @@ struct Main {
         .onChange((index: number) => {
           this.currentIndex = index;
         })
+        .scrollable(false)
       }
       .width('100%')
     }
