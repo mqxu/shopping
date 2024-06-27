@@ -23,7 +23,7 @@ export default struct SwiperExample {
       .itemSpace(5) //图片间隙，默认为0
       .indicator(true) //是否启用导航指示器，默认true
     }
-    .height('100%')
-    .margin({ top: '5vp' })
+    .width('100%')
+    .margin({top:'5vp'})
   }
 }
