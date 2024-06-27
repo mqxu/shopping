@@ -1,3 +1,4 @@
+import promptAction from '@ohos.promptAction';
 import { ItemType } from '../../mode/types';
 
 @Component
@@ -51,9 +52,16 @@ export default struct MineList {
                 .fontSize('16fp')
             }
             // 开关组件
-            // Toggle()
-            Text(item.title)
-              .fontSize('16vp')
+            Toggle({
+              type: ToggleType.Switch, isOn: false
+            }).onChange((isChange: boolean) => {
+              // isChange打开或关闭状态
+              let tip: string = isChange ? '系统选项打开' : '系统选项关闭'
+              promptAction.showToast({
+                message: tip,
+                duration: 2000
+              })
+            })
           }
           .width('100%')
           .justifyContent(FlexAlign.SpaceBetween)
